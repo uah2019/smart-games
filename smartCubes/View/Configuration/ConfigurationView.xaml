@@ -1,0 +1,13 @@
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="smartCubes.View.Configuration.ConfigurationView" Title="{Binding Title}" BackgroundColor="White">
+    <TableView Intent="Form" HasUnevenRows="True" BackgroundColor="White" HeightRequest="350" Margin="0,20,0,0">
+        <TableRoot>
+            <TableSection Title="Aplicación">
+                <ViewCell Height="50">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,0">
+                        <Button Text="Reestablecer valores" TextColor="Red" Command="{Binding ResetCommand}" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

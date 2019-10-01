@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="smartCubes.View.Session.PlaySessionView" Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary" Icon="refresh.png" Text="Add" Priority="0" Command="{Binding ReconnectCommand}" />
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout BackgroundColor="White">
+        <StackLayout Margin="0,0,0,0" BackgroundColor="#1da1f2" Orientation="Horizontal"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5,.0,1,.07">
+            <StackLayout  Margin="0,0,0,0" Orientation="Vertical"  HorizontalOptions="StartAndExpand" >
+                <Image Source="refresh.png" HeightRequest="40" WidthRequest="100" VerticalOptions="CenterAndExpand"  HorizontalOptions="EndAndExpand" Margin="0,0,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                Command="{Binding  OnTapGestureRecognizerTappedReconnect}"
+                NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <StackLayout  Margin="0,0,0,0" Orientation="Vertical" HorizontalOptions="EndAndExpand" >
+                <Image Source="close.png" VerticalOptions="CenterAndExpand"  WidthRequest="100"  Margin="0,0,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Command="{Binding  OnTapGestureRecognizerTappedClose}"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout BackgroundColor="White" Margin="0,65,0,0"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5,.1,1,1">
+                            <TableView Intent="Form" HasUnevenRows="True" BackgroundColor="White" HeightRequest="40" Margin="0,20,0,0">
+                                <TableRoot>
+                                    <TableSection Title="{Binding ActivityName}">
+                                        <ViewCell Height="140">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="40,0,40,0" >
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                                        <Label Text="Código alumno" TextColor="#657786" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  FontSize="Medium" Margin="20,0,30,0" />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                                         <Entry TextColor="Black" Text="{Binding StudentCode}" Margin="0,0,0,0" MaxLength="50" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Keyboard="Text" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </TableSection>
+                                </TableRoot>
+                            </TableView>
+                        </StackLayout>
+                   
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5,.6,.5,.18" AbsoluteLayout.LayoutFlags="All">
+            <Frame BackgroundColor="{Binding ColorFrame}" CornerRadius="40" AbsoluteLayout.LayoutBounds="0,.5,1,1" AbsoluteLayout.LayoutFlags="All" HasShadow="False" OutlineColor="{Binding ColorFrame}">
+                <StackLayout BackgroundColor="{Binding ColorFrame}" Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding Minutes}" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="70" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                        <Label Text=":" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="70" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding Seconds}" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="70" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                        <Label Text=":" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="70" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding Milliseconds}" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="70" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </AbsoluteLayout>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5,.95,.7,.07" AbsoluteLayout.LayoutFlags="All"  >
+            <Button Text="{Binding StartStop}" CornerRadius="10" BackgroundColor="#657786" FontSize="Large" TextColor="White" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Command="{Binding TimerCommand}" />
+        </AbsoluteLayout>
+        <StackLayout IsVisible="{Binding Loading}" BackgroundColor="#80F1F4F7" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds=".5,.5,1,1">
+            <ActivityIndicator IsRunning="true" IsVisible="true" Color="#80000000" VerticalOptions="EndAndExpand" HeightRequest="100"/>
+            <Label TextColor="#657786" FontSize="Medium" Text="Cargando..." HorizontalTextAlignment="Center"  VerticalOptions="StartAndExpand" Margin="0,20,0,0" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
